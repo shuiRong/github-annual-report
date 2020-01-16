@@ -1,0 +1,32 @@
+.home {
+    background: var(--home-color);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    img {
+        width: 30vw;
+        margin: 20vw auto 5vw auto;
+    }
+    h1 {
+        font-size: 10vw;
+        color: #ffffff;
+        margin-bottom: 10vw;
+    }
+    input {
+        width: 50vw;
+        height: 10vw;
+        outline: none;
+        border: none;
+        // border-radius: 5vw;
+        margin-bottom: 20vw;
+        font-size: 5vw;
+        background: var(--home-color);
+        border-bottom: 1px solid #dddddd;
+        color: #ffffff;
+    }
+    button {
+        width: 50vw;
+    }
+}

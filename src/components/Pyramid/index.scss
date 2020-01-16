@@ -1,0 +1,141 @@
+.fourth {
+    .scene {
+        --g-dark-color: #bad1fc;
+        --g-light-color: #e0eafc;
+
+        background: linear-gradient(
+            to top,
+            var(--g-light-color),
+            var(--g-dark-color)
+        );
+        height: 80vw;
+        overflow: hidden;
+        position: relative;
+        width: 80vw;
+        border-radius: 1vw;
+    }
+
+    .scene__sun {
+        --g-dark-color: #ffd530;
+        --g-light-color: #ffe47a;
+
+        background: linear-gradient(
+            to top left,
+            var(--g-light-color),
+            var(--g-dark-color)
+        );
+        border-radius: 50%;
+        height: 50px;
+        left: 35px;
+        position: absolute;
+        top: 50px;
+        width: 50px;
+    }
+
+    .scene__moon {
+        --g-dark-color: #eef1f5;
+        --g-light-color: #e6e9f0;
+
+        background: linear-gradient(
+            to top right,
+            var(--g-light-color),
+            var(--g-dark-color)
+        );
+        border-radius: 50%;
+        height: 50px;
+        right: 35px;
+        position: absolute;
+        top: 80vw;
+        width: 50px;
+    }
+
+    .scene__pyramide {
+        border-bottom: 100px solid #ff9d6c;
+        border-left: 75px solid transparent;
+        border-right: 75px solid transparent;
+        height: 0;
+        left: 100px;
+        position: absolute;
+        top: 100px;
+        width: 0;
+    }
+
+    .scene__ground {
+        --g-dark-color: #dd6161;
+        --g-light-color: #fff886;
+
+        background: linear-gradient(
+            to top,
+            var(--g-dark-color),
+            var(--g-light-color)
+        );
+        height: 80vw;
+        position: absolute;
+        top: 200px;
+        width: 80vw;
+    }
+
+    .scene.start {
+        animation: night-sky 1.75s ease-in forwards;
+    }
+
+    .scene.start .scene__sun {
+        animation: sunset 1.75s ease-in forwards;
+    }
+
+    .scene.start .scene__moon {
+        animation: moonrise 1.75s ease-out forwards;
+    }
+
+    .scene.start .scene__pyramide {
+        animation: night-pyramide 0s ease-in 1.15s forwards;
+    }
+
+    .scene.start .scene__ground {
+        animation: night-ground 1.75s ease-in forwards;
+    }
+
+    @keyframes night-sky {
+        100% {
+            --g-dark-color: #162851;
+            --g-light-color: #304352;
+
+            background: linear-gradient(
+                to top,
+                var(--g-light-color),
+                var(--g-dark-color)
+            );
+        }
+    }
+
+    @keyframes sunset {
+        100% {
+            top: 80vw;
+        }
+    }
+
+    @keyframes moonrise {
+        100% {
+            top: 50px;
+        }
+    }
+
+    @keyframes night-pyramide {
+        100% {
+            border-bottom-color: #bb4e75;
+        }
+    }
+
+    @keyframes night-ground {
+        100% {
+            --g-dark-color: #dd6161;
+            --g-light-color: #fff886;
+
+            background: linear-gradient(
+                to top,
+                var(--g-light-color),
+                var(--g-dark-color)
+            );
+        }
+    }
+}

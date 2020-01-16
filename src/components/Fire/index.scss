@@ -1,0 +1,91 @@
+:root {
+    --f-border-radius: 0.45rem;
+    --f-orange: #ffc719;
+    --f-red: #bf033b;
+    --f-rotated: 45deg;
+    --f-size: 7.25rem;
+    --f-animation-duration: 0.75s;
+    --f-animation-name: vibrate;
+    --f-animation-delay: 0.25s;
+}
+
+.second {
+    .container {
+        margin-top: 50vw;
+        display: flex;
+        justify-content: center;
+        width: 100vw;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+
+    .corpus {
+        position: absolute;
+        transform: rotate(var(--f-rotated));
+    }
+
+    .diamond {
+        background-color: var(--f-red);
+        background-image: linear-gradient(
+            195deg,
+            var(--f-red) 0%,
+            var(--f-orange) 74%
+        );
+        border-radius: var(--f-border-radius);
+        height: var(--f-size);
+        width: var(--f-size);
+    }
+
+    .diamond-inner {
+        position: relative;
+        animation: var(--f-animation-name) var(--f-animation-duration) ease-in
+            var(--f-animation-delay) alternate-reverse infinite;
+    }
+
+    .diamond-right {
+        --f-animation-duration: 0.95s;
+        --f-size: 4.25rem;
+
+        right: -35px;
+        top: -45px;
+    }
+
+    .diamond-left {
+        --f-animation-delay: 0.05s;
+        --f-size: 3.45rem;
+
+        right: 65px;
+        top: -45px;
+    }
+
+    .diamond-inner::after {
+        animation: var(--f-animation-name) var(--f-animation-duration) ease-in
+            var(--f-animation-delay) alternate-reverse infinite;
+        background-image: linear-gradient(
+            195deg,
+            var(--f-red) 0%,
+            var(--f-orange) 74%
+        );
+        border-radius: 0.15rem;
+        content: '';
+        display: block;
+        height: 1.25rem;
+        width: 1.25rem;
+        position: relative;
+        right: -15px;
+        top: -45px;
+    }
+
+    .diamond-right.diamond-inner::after {
+        top: -25px;
+        width: 0.75rem;
+        height: 0.75rem;
+    }
+
+    @keyframes vibrate {
+        to {
+            transform: scale(0.75) translate(15px, 15px);
+        }
+    }
+}

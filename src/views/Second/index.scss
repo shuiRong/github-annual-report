@@ -1,0 +1,46 @@
+@import '../../util.scss';
+
+.second {
+    width: 100vw;
+    height: 100vh;
+    padding: 0 10vw;
+    background-color: var(--second-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    .bold {
+        font-size: tvw(25);
+    }
+    .content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: flex-start;
+        text-align: left;
+        margin-bottom: 10vw;
+        h1 {
+            font-size: tvw(40);
+            line-height: 1;
+            strong {
+                font-size: tvw(60);
+            }
+        }
+        h3 {
+            font-size: tvw(30);
+            line-height: 1;
+            strong {
+                font-size: tvw(50);
+            }
+        }
+        > div {
+            margin-top: 10vw;
+            align-self: flex-end;
+            text-align: right;
+        }
+        > p {
+            margin-top: 20vw;
+            align-self: center;
+            text-align: center;
+        }
+    }
+}

@@ -1,0 +1,27 @@
+@import '../../util.scss';
+
+.sixth {
+    width: 100vw;
+    height: 100vh;
+    padding: 0 10vw;
+    background-color: var(--sixth-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    p {
+        font-size: tvw(25);
+        text-align: center;
+    }
+    .button {
+        width: 32vw;
+        margin-top: 20vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        img {
+            width: 6vw;
+            margin-right: 1vw;
+        }
+    }
+}

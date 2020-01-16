@@ -1,0 +1,343 @@
+.third {
+    $background-color: #2f2349;
+    $sky-gradient-start-color: #8652e2;
+    $sky-gradient-end-color: #6b3da0;
+
+    .canvas {
+        height: 70vw;
+        width: 100%;
+        border-radius: 1vw;
+        position: relative;
+        background: linear-gradient(
+            to bottom,
+            $sky-gradient-start-color 0%,
+            $sky-gradient-end-color 246px
+        );
+        overflow: hidden;
+    }
+    .moon {
+        position: absolute;
+        z-index: 2;
+        height: 70px;
+        width: 70px;
+        background-color: white;
+        left: 125px;
+        top: 110px;
+        border-radius: 50%;
+        box-shadow: 0 0 15px white, 0 0 100px white;
+
+        &-bg {
+            opacity: 0.5;
+            border-radius: 50%;
+
+            &-1,
+            &-2,
+            &-3,
+            &-4 {
+                position: absolute;
+            }
+
+            &-1 {
+                height: 95px;
+                width: 95px;
+                left: 113px;
+                top: 97px;
+                background: linear-gradient(to bottom, #c785ea, #bf70e2);
+            }
+
+            &-2 {
+                height: 130px;
+                width: 130px;
+                left: 96px;
+                top: 80px;
+                background: linear-gradient(to bottom, #b775e1, #ae5fd6);
+            }
+
+            &-3 {
+                height: 170px;
+                width: 170px;
+                left: 78px;
+                top: 61px;
+                background: linear-gradient(to bottom, #944bbe, #944bbe);
+            }
+
+            &-4 {
+                z-index: 0;
+                height: 210px;
+                width: 210px;
+                left: 59px;
+                top: 42px;
+                background: linear-gradient(to bottom, #9559df, #8141b9);
+            }
+        }
+    }
+
+    .mountain {
+        &-foreground,
+        &-background {
+            position: absolute;
+        }
+
+        &-foreground {
+            left: 5px;
+            bottom: -55px;
+            z-index: 3;
+
+            & path {
+                fill: #2a165b;
+            }
+        }
+
+        &-background {
+            left: -120px;
+            bottom: 25px;
+            z-index: 2;
+
+            & path {
+                fill: #3c1872;
+            }
+        }
+    }
+
+    .tree {
+        &-1,
+        &-2,
+        &-3,
+        &-4,
+        &-5,
+        &-6,
+        &-7 {
+            position: absolute;
+        }
+
+        &-1 {
+            z-index: 2;
+            width: 35px;
+            left: 10px;
+            bottom: 100px;
+            & path {
+                fill: #3c1872;
+            }
+        }
+
+        &-2 {
+            z-index: 2;
+            width: 25px;
+            left: 40px;
+            bottom: 105px;
+            & path {
+                fill: #3c1872;
+            }
+        }
+
+        &-3 {
+            z-index: 3;
+            width: 60px;
+            left: 50px;
+            bottom: 15px;
+            & path {
+                fill: #140d35;
+            }
+        }
+
+        &-4 {
+            z-index: 3;
+            width: 90px;
+            left: 100px;
+            bottom: 0px;
+            & path {
+                fill: #140d35;
+            }
+        }
+
+        &-5 {
+            z-index: 3;
+            width: 90px;
+            left: 165px;
+            bottom: 8px;
+            & path {
+                fill: #140d35;
+            }
+        }
+
+        &-6 {
+            z-index: 1;
+            width: 25px;
+            right: 10px;
+            bottom: 130px;
+            & path {
+                fill: #301763;
+            }
+        }
+
+        &-7 {
+            z-index: 1;
+            width: 15px;
+            right: 0px;
+            bottom: 125px;
+            & path {
+                fill: #301763;
+            }
+        }
+    }
+
+    .star {
+        background: white;
+        position: absolute;
+        left: 100px;
+        top: 20px;
+        border-radius: 25%;
+        animation: startwinkle 5s infinite linear;
+        opacity: 0.5;
+        &.star-1 {
+            left: 150px;
+        }
+        &.star-2 {
+            left: 170px;
+            top: 60px;
+        }
+
+        &.star-3 {
+            left: 130px;
+            top: 80px;
+        }
+        &.star-4 {
+            left: 90px;
+            top: 80px;
+        }
+        &.star-5 {
+            left: 179px;
+            top: 90px;
+        }
+        &.star-6 {
+            left: 136px;
+            top: 97px;
+        }
+        &.star-7 {
+            left: 150px;
+            top: 97px;
+        }
+        &.star-8 {
+            left: 200px;
+            top: 95px;
+        }
+        &.star-9 {
+            left: 260px;
+            top: 95px;
+        }
+        &.star-10 {
+            left: 37px;
+            top: 100px;
+        }
+        &.star-11 {
+            left: 35px;
+            top: 80px;
+        }
+        &.star-12 {
+            left: 25px;
+            top: 90px;
+        }
+        &.star-13 {
+            left: 25px;
+            top: 135px;
+        }
+        &.star-14 {
+            left: 25px;
+            top: 118px;
+        }
+        &.star-15 {
+            left: 10px;
+            top: 123px;
+        }
+        &.star-16 {
+            left: 135px;
+            top: 23px;
+        }
+        &.star-17 {
+            left: 140px;
+            top: 10px;
+        }
+
+        &.star-18 {
+            left: 200px;
+            top: 36px;
+        }
+        &.star-19 {
+            left: 215px;
+            top: 37px;
+        }
+        &.star-20 {
+            left: 219px;
+            top: 30px;
+        }
+        &.star-21 {
+            left: 230px;
+            top: 80px;
+        }
+        &.star-22 {
+            left: 230px;
+            top: 150px;
+        }
+        &.star-23 {
+            left: 226px;
+            top: 158px;
+        }
+        &.star-24 {
+            left: 250px;
+            top: 136px;
+        }
+        &.star-25 {
+            left: 273px;
+            top: 123px;
+        }
+        &.star-26 {
+            left: 298px;
+            top: 93px;
+        }
+        &.star-27 {
+            left: 296px;
+            top: 136px;
+        }
+        &.star-28 {
+            left: 279px;
+            top: 150px;
+        }
+        &.star-29 {
+            left: 85px;
+            top: 29px;
+        }
+        &.star-30 {
+            left: 83px;
+            top: 46px;
+        }
+    }
+
+    .opacity-half {
+        opacity: 0.5;
+    }
+
+    .opacity-quarter {
+        opacity: 0.25;
+    }
+
+    @keyframes startwinkle {
+        0% {
+            opacity: 0;
+        }
+        50% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+
+    @for $i from 1 through 30 {
+        .star:nth-child(#{$i}) {
+            $size: random(2) + px;
+            height: $size;
+            width: $size;
+            animation-delay: ($i * -0.3s);
+        }
+    }
+}

@@ -1,0 +1,37 @@
+@import '../../util.scss';
+
+.fourth {
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--fourth-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    > div {
+        margin-top: 20vw;
+    }
+    section {
+        width: 80%;
+        margin-bottom: 10vw;
+        h1 {
+            font-size: tvw(60);
+            position: relative;
+            text-align: center;
+        }
+        .left {
+            text-align: left;
+            margin-bottom: 5vw;
+        }
+        .right {
+            text-align: right;
+            margin-bottom: 15vw;
+        }
+        > p {
+            text-align: center;
+        }
+        strong {
+            font-size: tvw(30);
+        }
+    }
+}

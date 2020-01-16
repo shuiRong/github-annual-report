@@ -1,0 +1,36 @@
+@import '../../util.scss';
+
+.third {
+    width: 100vw;
+    height: 100vh;
+    padding: 0 10vw;
+    background-color: var(--third-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    > div {
+        width: 100%;
+        h1 {
+            text-align: center;
+            margin-top: 10vw;
+            margin-bottom: 1vw;
+            font-size: tvw(60);
+        }
+    }
+    section {
+        width: 100%;
+        margin-bottom: 10vw;
+        .left {
+            text-align: left;
+        }
+        .right {
+            text-align: right;
+            margin-bottom: 15vw;
+        }
+        > p {
+            text-align: center;
+        }
+    }
+}

@@ -1,0 +1,56 @@
+.first {
+    $point: #70C490;
+    $point-light: lighten($point, 5%);
+    $background-color: $point;
+    $shadow-color: $point-light;
+    $shadow-length: 500;
+    $text-size: inherit;
+
+    @function longshadow($length, $angle, $shadow-color) {
+        $val: 0px 0px transparent;
+        @for $i from 2 through $length {
+            $val: #{$val}, #{$i}px #{$i * $angle}px $shadow-color;
+        }
+        @return $val;
+    }
+
+    html {
+        font-size: 1em;
+    }
+
+    body {
+        overflow: hidden;
+    }
+
+    .ambiva-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        h1,
+        h2,
+        h3 {
+            text-transform: uppercase;
+            color: white;
+            font-size: $text-size;
+            text-shadow: longshadow($shadow-length, 1, $shadow-color);
+            animation-name: shadow;
+            animation-duration: 2s;
+            transition-timing-function: cubic-bezier(0.68, 0, 0.31, 1);
+        }
+
+        p {
+            color: white;
+        }
+    }
+
+    @keyframes shadow {
+        from {
+            text-shadow: longshadow(0, 1, $shadow-color);
+        }
+        to {
+            text-shadow: longshadow($shadow-length, 1, $shadow-color);
+        }
+    }
+}
