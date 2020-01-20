@@ -1,16 +1,12 @@
 import React, { useState } from 'react';
-import { fetchData } from '../../api.js';
+import { useHistory } from 'react-router-dom';
 import MilkButton from '../../components/MilkButton';
-import Loader from '../../components/Loader';
 import './index.scss';
+import { getUsername } from '../../util';
 
-export default function Home() {
-    const [username, setUsername] = useState('');
-
-    const getData = () => {
-        fetchData(username);
-        
-    };
+function Home() {
+    const history = useHistory();
+    const [username, setUsername] = useState(getUsername());
 
     return (
         <div className="home">
@@ -23,7 +19,15 @@ export default function Home() {
                     setUsername(target.value);
                 }}
             />
-            <MilkButton onClick={getData} />
+            <div
+                onClick={() => {
+                    history.push(`/first?user=${username}`);
+                }}
+            >
+                <MilkButton />
+            </div>
         </div>
     );
 }
+
+export default Home;

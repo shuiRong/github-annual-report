@@ -1,5 +1,5 @@
 .first {
-    $point: #70C490;
+    $point: #70c490;
     $point-light: lighten($point, 5%);
     $background-color: $point;
     $shadow-color: $point-light;
@@ -31,7 +31,6 @@
         h1,
         h2,
         h3 {
-            text-transform: uppercase;
             color: white;
             font-size: $text-size;
             text-shadow: longshadow($shadow-length, 1, $shadow-color);

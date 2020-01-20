@@ -1,28 +1,73 @@
-import React from 'react';
 import './index.scss';
+import React, { useEffect, useState } from 'react';
+import Loader from '../../components/Loader';
+import { getUsername } from '../../util';
+import { useHistory } from 'react-router-dom';
+import {
+    requestRepos,
+    requestContributors,
+    fifthData,
+    requestIssues,
+} from '../../service';
 
 export default function Fifth() {
+    const username = getUsername();
+    const history = useHistory();
+    const [loading, setLoading] = useState(true);
+    const [data, setData] = useState({});
+
+    useEffect(() => {
+        async function get() {
+            await requestRepos(username);
+            await Promise.all([
+                requestContributors(username),
+                requestIssues(username),
+            ]);
+
+            if (/fifth/.test(window.location.href)) {
+                setLoading(false);
+                setData(fifthData);
+            }
+        }
+
+        get();
+    }, [username]);
+
+    if (loading) {
+        return (
+            <div className="fifth">
+                <Loader />
+            </div>
+        );
+    }
+
     return (
-        <div className="fifth">
+        <div
+            className="fifth"
+            onClick={() => {
+                history.push(`/sixth?user=${username}`);
+            }}
+        >
             <div>
                 <h1>2019：充实的一年</h1>
                 <img src={require('../../assets/snow.png')} alt="snow" />
             </div>
             <section>
                 <div className="left">
+                    <p>这一年里，你</p>
                     <p>
-                        新增<strong>423351</strong>行代码
+                        新增了<strong>{data.additions}</strong>行代码
                     </p>
                     <p>
-                        删除<strong>123351</strong>行代码
+                        删除了<strong>{data.deletions}</strong>行代码
                     </p>
                     <p>
-                        <strong>288</strong>次commit
+                        产生了<strong>{data.commits}</strong>次commit
                     </p>
                 </div>
                 <div className="right">
                     <p>
-                        另外，有<strong>188</strong>
+                        另外，至少<strong>{data.issues}</strong>
                         个issue的讨论
                     </p>
                     <p>你有参与其中</p>

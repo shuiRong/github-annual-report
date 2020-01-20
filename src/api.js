@@ -1,44 +1,43 @@
+const token = 'token 10a0a3708f6900e6a05dcf489022b44f95c37d1d';
+
 const baseURL = 'https://api.github.com';
-export let repos = [];
-export let orgs = [];
-export let user = {};
-export let following = {};
-
 const fetch = url => {
-    return window.fetch(`${baseURL}${url}`);
+    console.log(url);
+    return window.fetch(`${baseURL}${url}`, {
+        headers: {
+            Authorization: token,
+        },
+    });
 };
 
-const listRepos = async username => {
+export const fetchRepos = async username => {
     const res = await fetch(`/users/${username}/repos?sort=created`);
-    const list = await res.json();
-    repos = list;
-
-    list.forEach(item=>{
-         listContributors(username,item)
-    })
+    return await res.json();
 };
 
-const listContributors = async (username, repo) => {
-    const res = await fetch(`/repos/${username}/${repo}/stats/contributors`);
-    const list = await res.json();
-    repos = list;
+export const fetchContributors = async (username, repoName) => {
+    const res = await fetch(
+        `/repos/${username}/${repoName}/stats/contributors`
+    );
+    return await res.json();
 };
 
-const listOrgs = async username => {
-    const res = await fetch(`/users/${username}/orgs`);
-    const list = await res.json();
-    orgs = list;
+export const fetchIssues = async (username, repoName) => {
+    const res = await fetch(`/repos/${username}/${repoName}/issues?state=all`);
+    return await res.json();
 };
 
-const getFollowing = async username => {
+export const fetchUser = async username => {
+    const res = await fetch(`/users/${username}`);
+    return await res.json();
+};
+
+export const fetchFollowing = async username => {
     const res = await fetch(`/users/${username}/following`);
-    const data = await res.json();
-    following = data;
+    return await res.json();
 };
 
-export const fetchData = username => {
-    listRepos(username);
-    // userInfo(username);
-    listOrgs(username);
-    getFollowing(username);
+export const fetchCommits = async (username, repoName) => {
+    const res = await fetch(`/repos/${username}/${repoName}/commits`);
+    return await res.json();
 };

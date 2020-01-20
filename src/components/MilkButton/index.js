@@ -4,12 +4,12 @@ import './index.scss';
 export default function MilkButton() {
     return (
         <div>
-            <div class="container">
-                <button class="btn play-pause">
-                    <div class="icon-container">
+            <div className="container">
+                <button className="btn play-pause">
+                    <div className="icon-container">
                         <svg
                             t="1579183548434"
-                            class="icon"
+                            className="icon"
                             viewBox="0 0 1024 1024"
                             version="1.1"
                             xmlns="http://www.w3.org/2000/svg"

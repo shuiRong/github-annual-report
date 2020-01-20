@@ -33,12 +33,13 @@ body {
 
 strong {
     font-size: 7vw;
+    display: inline-block;
 }
 strong::before {
-    content: ' ';
+    content: '\b';
 }
 strong::after {
-    content: ' ';
+    content: '\b';
 }
 
 :root {

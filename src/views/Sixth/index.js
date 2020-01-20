@@ -13,7 +13,6 @@ export default function Sixth() {
                 <p></p>
             </section>
             <NewYear />
-            {/* <button className="button">分享</button> */}
             <a
                 href="https://github.com/shuiRong/github-annual-report"
                 target="_blanket"

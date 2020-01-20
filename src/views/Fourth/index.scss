@@ -8,9 +8,6 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    > div {
-        margin-top: 20vw;
-    }
     section {
         width: 80%;
         margin-bottom: 10vw;
@@ -25,10 +22,11 @@
         }
         .right {
             text-align: right;
-            margin-bottom: 15vw;
+            margin-bottom: 10vw;
         }
         > p {
             text-align: center;
+            margin: 2.5vw 0;
         }
         strong {
             font-size: tvw(30);

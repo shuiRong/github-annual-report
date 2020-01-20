@@ -9,7 +9,7 @@ export default function NewYear() {
                 viewBox="-20 -20 140 240"
                 width="100"
                 height="200"
-                stroke-width="20"
+                strokeWidth="20"
                 fill="none"
                 style={{ '--color': '#5288E1', '--i': 1 }}
             >
@@ -30,7 +30,7 @@ export default function NewYear() {
                 viewBox="-20 -20 140 240"
                 width="100"
                 height="200"
-                stroke-width="20"
+                strokeWidth="20"
                 fill="none"
                 style={{ '--color': '#3DA658', '--i': 2 }}
             >
@@ -53,7 +53,7 @@ export default function NewYear() {
                 viewBox="-20 -20 140 240"
                 width="100"
                 height="200"
-                stroke-width="20"
+                strokeWidth="20"
                 fill="none"
                 style={{ '--color': '#EFBE1B', '--i': 3 }}
             >
@@ -74,7 +74,7 @@ export default function NewYear() {
                 viewBox="-20 -20 140 240"
                 width="100"
                 height="200"
-                stroke-width="20"
+                strokeWidth="20"
                 fill="none"
                 style={{ '--color': '#D7483D', '--i': 4 }}
             >
