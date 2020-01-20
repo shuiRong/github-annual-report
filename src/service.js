@@ -1,4 +1,4 @@
-import { days2Now, dealTime, is2019 } from './util';
+import { days2Now, dealTime, is2019, get, set } from './util';
 import {
     fetchRepos,
     fetchUser,
@@ -30,7 +30,7 @@ export const fifthData = {
     deletions: 0,
 };
 
-const dayCommitsDirectory = {}; // key: date ,value: commits info list
+let dayCommitsDirectory = {}; // key: date ,value: commits info list
 
 export const requestRepos = async username => {
     repos = await fetchRepos(username);
@@ -74,13 +74,26 @@ export const requestUser = async username => {
 };
 
 export const requestFollowing = async username => {
-    const res = await fetchFollowing(username);
+    let res = await get('first_following');
+    if (res) {
+        first_following = res;
+        return;
+    }
+
+    res = await fetchFollowing(username);
     if (res.length) {
         first_following = res[0].login;
+        set('first_following', first_following);
     }
 };
 
 export const requestCommits = async username => {
+    dayCommitsDirectory = {};
+    commitsAtNight = {
+        total: 0,
+        latestTime: 0,
+    };
+
     await Promise.all(
         repos.map(async repo => {
             const commitsList = await fetchCommits(username, repo.name);
@@ -121,6 +134,8 @@ export const requestCommits = async username => {
             });
         })
     );
+
+    console.log(commitsAtNight);
 };
 
 // 分析获得哪天的commits最多，并且计算出这天的commits最多的仓库/数量是多少
@@ -163,14 +178,12 @@ export const getMostCommitsInOneDay = () => {
     tempMostCommits.theRepo = repoName;
 
     mostCommits = tempMostCommits;
-    console.log('mostCommits', mostCommits);
 };
 
 export const fetchData = async username => {
     await Promise.all([requestRepos(username), requestUser(username)]);
 
     requestFollowing(username);
-
     return {
         created_at: dealTime(user.created_at),
         first_repo: repos[repos.length - 1].name,

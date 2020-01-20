@@ -21,6 +21,10 @@ function Home() {
             />
             <div
                 onClick={() => {
+                    if (!username.trim()) {
+                        alert('请输入用户名');
+                        return;
+                    }
                     history.push(`/first?user=${username}`);
                 }}
             >

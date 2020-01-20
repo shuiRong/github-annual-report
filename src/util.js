@@ -27,7 +27,13 @@ export const set = (key, value) => {
 };
 
 export const get = key => {
-    return localStorage.getItem(key);
+    let value;
+    try {
+        value = localStorage.getItem(key);
+        return JSON.parse(value);
+    } catch (_) {
+        return value;
+    }
 };
 
 export const is2019 = created_at => {

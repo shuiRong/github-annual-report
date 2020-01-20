@@ -27,8 +27,12 @@ export default function Third() {
                 setData(commitsAtNight);
             }
         }
-
-        get();
+        if (!commitsAtNight.total) {
+            get();
+        } else {
+            setLoading(false);
+            setData(commitsAtNight);
+        }
     }, [username]);
 
     if (loading) {

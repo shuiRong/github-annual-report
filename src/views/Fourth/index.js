@@ -28,8 +28,12 @@ export default function Fourth() {
                 setData(mostCommits);
             }
         }
-
-        get();
+        if (!mostCommits.total) {
+            get();
+        } else {
+            setLoading(false);
+            setData(mostCommits);
+        }
     }, [username]);
 
     if (loading) {
