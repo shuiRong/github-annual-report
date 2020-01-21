@@ -4,24 +4,24 @@ import './index.scss';
 import HelloYou from '../../components/HelloYou';
 import Loader from '../../components/Loader';
 import { fetchData } from '../../service';
-import { getUsername } from '../../util';
+import { getToken } from '../../util';
 
 export default function First() {
-    const username = getUsername();
     const history = useHistory();
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState({});
 
     useEffect(() => {
         async function get() {
-            const res = await fetchData(username);
+            const token = await getToken();
+            const res = await fetchData(token);
             if (/first/.test(window.location.href)) {
                 setLoading(false);
                 setData(res);
             }
         }
         get();
-    }, [username]);
+    }, []);
 
     if (loading) {
         return (
@@ -35,7 +35,7 @@ export default function First() {
         <div
             className="first"
             onClick={() => {
-                history.push(`/second?user=${username}`);
+                history.push(`/second`);
             }}
         >
             <div className="hi">

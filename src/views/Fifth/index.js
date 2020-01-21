@@ -1,9 +1,11 @@
 import './index.scss';
 import React, { useEffect, useState } from 'react';
 import Loader from '../../components/Loader';
-import { getUsername } from '../../util';
+import { getToken } from '../../util';
 import { useHistory } from 'react-router-dom';
 import {
+    user,
+    requestUser,
     requestRepos,
     requestContributors,
     fifthData,
@@ -11,17 +13,20 @@ import {
 } from '../../service';
 
 export default function Fifth() {
-    const username = getUsername();
     const history = useHistory();
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState({});
 
     useEffect(() => {
         async function get() {
-            await requestRepos(username);
+            const token = await getToken();
+            if (!user.login) {
+                await requestUser(token);
+            }
+            await requestRepos(token);
             await Promise.all([
-                requestContributors(username),
-                requestIssues(username),
+                requestContributors(token),
+                requestIssues(token),
             ]);
 
             if (/fifth/.test(window.location.href)) {
@@ -31,7 +36,7 @@ export default function Fifth() {
         }
 
         get();
-    }, [username]);
+    }, []);
 
     if (loading) {
         return (
@@ -45,7 +50,7 @@ export default function Fifth() {
         <div
             className="fifth"
             onClick={() => {
-                history.push(`/sixth?user=${username}`);
+                history.push(`/sixth`);
             }}
         >
             <div>

@@ -1,9 +1,11 @@
-export const getUsername = () => {
-    let user = '';
-    if (/\?user=(.+)&?/.test(window.location.search)) {
-        user = window.location.search.match(/\?user=(.+)&?/)[1];
+export const getToken = async () => {
+    let token = '';
+    if (/\?token=(.+)&?/.test(window.location.search)) {
+        token = window.location.search.match(/\?token=(.+)&?/)[1];
+    } else {
+        token = await get('token');
     }
-    return user;
+    return token;
 };
 
 export const days2Now = created_at => {

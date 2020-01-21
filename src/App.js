@@ -40,6 +40,7 @@ function App() {
                 </Route>
                 <Route path="/">
                     <Home />
+                    <Sign />
                 </Route>
             </Switch>
         </Router>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './index.scss';
 import Fire from '../../components/Fire';
 import Loader from '../../components/Loader';
-import { getUsername } from '../../util';
+import { getToken } from '../../util';
 import { useHistory } from 'react-router-dom';
 import {
     user,
@@ -12,15 +12,15 @@ import {
 } from '../../service';
 
 export default function Second() {
-    const username = getUsername();
     const history = useHistory();
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState({});
 
     useEffect(() => {
         async function get() {
-            await requestFollowing(username);
-            await requestUser(username);
+            const token = await getToken();
+            await requestUser(token);
+            await requestFollowing(token);
 
             if (/second/.test(window.location.href)) {
                 setLoading(false);
@@ -32,7 +32,7 @@ export default function Second() {
             }
         }
 
-        if (!user.name) {
+        if (!user.login || !first_following) {
             get();
             return;
         }
@@ -44,7 +44,7 @@ export default function Second() {
                 first_following,
             });
         }
-    }, [username]);
+    }, []);
 
     if (loading) {
         return (
@@ -60,7 +60,7 @@ export default function Second() {
             <section
                 className="content"
                 onClick={() => {
-                    history.push(`/third?user=${username}`);
+                    history.push(`/third`);
                 }}
             >
                 <h1>

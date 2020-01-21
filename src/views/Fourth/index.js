@@ -2,26 +2,31 @@ import Pyramid from '../../components/Pyramid';
 import './index.scss';
 import React, { useEffect, useState } from 'react';
 import Loader from '../../components/Loader';
-import { getUsername } from '../../util';
+import { getToken } from '../../util';
 import { useHistory } from 'react-router-dom';
 import {
+    user,
     requestRepos,
     mostCommits,
     requestCommits,
     getMostCommitsInOneDay,
+    requestUser,
 } from '../../service';
 
 export default function Fourth() {
-    const username = getUsername();
     const history = useHistory();
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState({});
 
     useEffect(() => {
         async function get() {
-            await requestRepos(username);
-            await requestCommits(username);
-            await getMostCommitsInOneDay(username);
+            const token = await getToken();
+            if (!user.login) {
+                await requestUser(token);
+            }
+            await requestRepos(token);
+            await requestCommits(token);
+            await getMostCommitsInOneDay(token);
 
             if (/fourth/.test(window.location.href)) {
                 setLoading(false);
@@ -34,7 +39,7 @@ export default function Fourth() {
             setLoading(false);
             setData(mostCommits);
         }
-    }, [username]);
+    }, []);
 
     if (loading) {
         return (
@@ -48,7 +53,7 @@ export default function Fourth() {
         <div
             className="fourth"
             onClick={() => {
-                history.push(`/fifth?user=${username}`);
+                history.push(`/fifth`);
             }}
         >
             <Pyramid />

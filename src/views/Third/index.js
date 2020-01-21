@@ -2,9 +2,15 @@ import './index.scss';
 import NightMoon from '../../components/NightMoon';
 import React, { useEffect, useState } from 'react';
 import Loader from '../../components/Loader';
-import { getUsername } from '../../util';
+import { getToken } from '../../util';
 import { useHistory } from 'react-router-dom';
-import { requestRepos, requestCommits, commitsAtNight } from '../../service';
+import {
+    user,
+    requestUser,
+    requestRepos,
+    requestCommits,
+    commitsAtNight,
+} from '../../service';
 
 const getTime = time => {
     const temp = String(time).split('.');
@@ -12,15 +18,18 @@ const getTime = time => {
 };
 
 export default function Third() {
-    const username = getUsername();
     const history = useHistory();
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState({});
 
     useEffect(() => {
         async function get() {
-            await requestRepos(username);
-            await requestCommits(username);
+            const token = await getToken();
+            if (!user.login) {
+                await requestUser(token);
+            }
+            await requestRepos(token);
+            await requestCommits(token);
 
             if (/third/.test(window.location.href)) {
                 setLoading(false);
@@ -33,7 +42,7 @@ export default function Third() {
             setLoading(false);
             setData(commitsAtNight);
         }
-    }, [username]);
+    }, []);
 
     if (loading) {
         return (
@@ -47,7 +56,7 @@ export default function Third() {
         <div
             className="third"
             onClick={() => {
-                history.push(`/fourth?user=${username}`);
+                history.push(`/fourth`);
             }}
         >
             <div className="picture">

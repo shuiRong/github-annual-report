@@ -1,5 +1,5 @@
 import React from 'react';
-import { getUsername } from '../../util';
+import { user } from '../../service';
 
 import './index.scss';
 
@@ -8,7 +8,7 @@ export default function HelloYou() {
         <div className="ambiva-header">
             <h1>
                 Hello, <br />
-                {getUsername()}
+                {user.login}
             </h1>
         </div>
     );

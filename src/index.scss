@@ -34,12 +34,7 @@ body {
 strong {
     font-size: 7vw;
     display: inline-block;
-}
-strong::before {
-    content: '\b';
-}
-strong::after {
-    content: '\b';
+    padding: 0 1vw;
 }
 
 :root {

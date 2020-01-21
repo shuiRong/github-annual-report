@@ -1,31 +1,39 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import MilkButton from '../../components/MilkButton';
 import './index.scss';
-import { getUsername } from '../../util';
+import { getToken, set } from '../../util';
+
+const client_id = '38f3a48dab9243a31252';
+const authorize_uri = 'https://github.com/login/oauth/authorize';
+const redirect_uri = 'http://localhost:8080/oauth/redirect';
 
 function Home() {
     const history = useHistory();
-    const [username, setUsername] = useState(getUsername());
+
+    useEffect(() => {
+        async function func() {
+            let token = await getToken();
+            if (token) {
+                set('token', token);
+                history.push(`/first`);
+                return;
+            }
+        }
+        func();
+    }, [history]);
 
     return (
         <div className="home">
             <img src={require('../../assets/GitHub.png')} alt="github" />
-            <h1>Github年度报告</h1>
-            <input
-                placeholder="用户名 ..."
-                value={username}
-                onChange={({ target }) => {
-                    setUsername(target.value);
-                }}
-            />
+            <h1>
+                2019
+                <br />
+                Github年度报告
+            </h1>
             <div
                 onClick={() => {
-                    if (!username.trim()) {
-                        alert('请输入用户名');
-                        return;
-                    }
-                    history.push(`/first?user=${username}`);
+                    window.location.href = `${authorize_uri}?client_id=${client_id}&redirect_uri=${redirect_uri}`;
                 }}
             >
                 <MilkButton />

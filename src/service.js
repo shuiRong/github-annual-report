@@ -23,7 +23,7 @@ export let mostCommits = {
     totalToTheRepo: 0, //
     theRepo: '', // the special reop's name
 };
-export const fifthData = {
+export let fifthData = {
     commits: 0,
     issues: 0,
     additions: 0,
@@ -32,21 +32,34 @@ export const fifthData = {
 
 let dayCommitsDirectory = {}; // key: date ,value: commits info list
 
-export const requestRepos = async username => {
-    repos = await fetchRepos(username);
+export const requestRepos = async token => {
+    repos = await fetchRepos(token);
 };
 
-export const requestContributors = async username => {
+export const requestContributors = async token => {
+    const username = user.login;
+    fifthData = {
+        commits: 0,
+        issues: 0,
+        additions: 0,
+        deletions: 0,
+    };
+
     const contributorList = await Promise.all(
-        repos.map(async repo => fetchContributors(username, repo.name))
+        repos.map(async repo => fetchContributors(repo.full_name, token))
     );
 
     contributorList.forEach(item => {
-        item.forEach(({ total, weeks, author }) => {
+        if (!Array.isArray(item)) return;
+        item.forEach(({ weeks, author }) => {
             if (!author || author.login !== username) return;
 
-            fifthData.commits += total;
-            weeks.forEach(({ a, d }) => {
+            if (!Array.isArray(weeks)) return;
+            weeks.forEach(({ w, a, d, c }) => {
+                // 判断是否是2019年产生的
+                if (!is2019(w * 1000)) return;
+
+                fifthData.commits += c;
                 fifthData.additions += a;
                 fifthData.deletions += d;
             });
@@ -54,12 +67,15 @@ export const requestContributors = async username => {
     });
 };
 
-export const requestIssues = async username => {
+export const requestIssues = async token => {
+    const username = user.login;
+
     const issueList = await Promise.all(
-        repos.map(async repo => fetchIssues(username, repo.name))
+        repos.map(async repo => fetchIssues(repo.full_name, token))
     );
 
     issueList.forEach(item => {
+        if (!Array.isArray(item)) return;
         item.forEach(({ user }) => {
             if (!user) return;
             if (user.login === username) {
@@ -69,38 +85,50 @@ export const requestIssues = async username => {
     });
 };
 
-export const requestUser = async username => {
-    user = await fetchUser(username);
+export const requestUser = async token => {
+    user = await fetchUser(token);
 };
 
-export const requestFollowing = async username => {
+export const requestFollowing = async token => {
+    const username = user.login;
+
     let res = await get('first_following');
     if (res) {
         first_following = res;
         return;
     }
 
-    res = await fetchFollowing(username);
+    res = await fetchFollowing(username, token);
     if (res.length) {
         first_following = res[0].login;
         set('first_following', first_following);
     }
 };
 
-export const requestCommits = async username => {
+export const requestCommits = async token => {
+    const username = user.login;
+
     dayCommitsDirectory = {};
     commitsAtNight = {
         total: 0,
         latestTime: 0,
     };
 
+    // TODO: 比如996.TSC 这种不是自己的项目，但自己参与了commits，需要判断
+
     await Promise.all(
         repos.map(async repo => {
-            const commitsList = await fetchCommits(username, repo.name);
+            const commitsList = await fetchCommits(repo.full_name, token);
             // 计算晚上提交的commits数据
-            commitsList.forEach(({ commit }) => {
-                const { name, date } = commit.author;
-                if (name === username && is2019(date)) {
+            commitsList.forEach(({ commit, author }) => {
+                const login = author && author.login;
+                const login2 = commit.author.name;
+                const date = commit.author.date;
+                // const { name, date } = commit.author;
+                if (
+                    (login === username || login2 === username) &&
+                    is2019(date)
+                ) {
                     const dateMonth = new Date(date).toLocaleDateString();
                     if (!dayCommitsDirectory[dateMonth]) {
                         dayCommitsDirectory[dateMonth] = [
@@ -156,13 +184,15 @@ export const getMostCommitsInOneDay = () => {
 
     const repoCommitsDirectory = {};
     // 判断这天哪个仓库commit最多
-    dayCommitsDirectory[dateIndex].forEach(commit => {
-        if (!repoCommitsDirectory[commit.repoName]) {
-            repoCommitsDirectory[commit.repoName] = [commit];
-        } else {
-            repoCommitsDirectory[commit.repoName].push(commit);
-        }
-    });
+    if (dayCommitsDirectory && dayCommitsDirectory[dateIndex]) {
+        dayCommitsDirectory[dateIndex].forEach(commit => {
+            if (!repoCommitsDirectory[commit.repoName]) {
+                repoCommitsDirectory[commit.repoName] = [commit];
+            } else {
+                repoCommitsDirectory[commit.repoName].push(commit);
+            }
+        });
+    }
 
     let repoName;
     let commitsForRepo = 0;
@@ -180,10 +210,10 @@ export const getMostCommitsInOneDay = () => {
     mostCommits = tempMostCommits;
 };
 
-export const fetchData = async username => {
-    await Promise.all([requestRepos(username), requestUser(username)]);
+export const fetchData = async token => {
+    await Promise.all([requestRepos(token), requestUser(token)]);
 
-    requestFollowing(username);
+    requestFollowing(token);
     return {
         created_at: dealTime(user.created_at),
         first_repo: repos[repos.length - 1].name,
