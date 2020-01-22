@@ -1,14 +1,12 @@
 ### Github Annual Report 2019｜Github 年度报告 2019
 
----
-
 
 
 **2019年过去了，**
 
 **我很怀念它。**
 
-
+<br/>
 
 **在过去的一年中，**
 
@@ -28,13 +26,13 @@
 
 **参加了多少个组织？（待实现）**
 
-
+<br/>
 
 **让我来帮助你回忆～**
 
 
 
-[传送门](https://linshuirong.cn/github/)
+[年度报告传送门](https://linshuirong.cn/github/)
 
 
 
