@@ -2,12 +2,12 @@
 
 .sixth {
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     padding: 0 10vw;
     background-color: var(--sixth-color);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     p:not(.sign) {
         font-size: tvw(25);

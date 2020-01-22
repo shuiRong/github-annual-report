@@ -2,7 +2,7 @@
 
 .fifth {
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     padding: 0 10vw;
     background-color: var(--fifth-color);
     display: flex;
@@ -13,7 +13,6 @@
         font-size: tvw(40);
         position: relative;
         text-align: center;
-        margin-bottom: 5vw;
     }
     img {
         width: 100%;
@@ -29,7 +28,7 @@
         }
         .right {
             text-align: right;
-            margin-top: 10vw;
+            margin-top: 2vw;
         }
         > p {
             text-align: center;
