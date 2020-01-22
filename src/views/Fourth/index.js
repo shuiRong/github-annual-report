@@ -1,4 +1,3 @@
-import Pyramid from '../../components/Pyramid';
 import './index.scss';
 import React, { useEffect, useState } from 'react';
 import Loader from '../../components/Loader';
