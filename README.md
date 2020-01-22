@@ -1,6 +1,6 @@
-### Github Annual Report 2019｜Github 年度报告 2019
+### Github 2019 Annual Report｜Github 2019 年度报告 
 
-
+<br/>
 
 **2019年过去了，**
 
@@ -30,15 +30,23 @@
 
 **让我来帮助你回忆～**
 
+<br/>
 
+<br/>
 
-[年度报告传送门](https://linshuirong.cn/github/)
+[查看你的年度报告](https://linshuirong.cn/github/)
 
-
+<br/>
 
 **Previews**
 
 | ![gakki](./previews/1.png) | ![gakki](./previews/2.png) | ![gakki](./previews/3.png) |
 | -------------------------- | -------------------------- | -------------------------- |
 | ![gakki](./previews/4.png) | ![gakki](./previews/5.png) | ![gakki](./previews/6.png) |
+
+
+
+**Getting Started**
+
+will updated soon...
 
