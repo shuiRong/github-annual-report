@@ -9,7 +9,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    p {
+    p:not(.sign) {
         font-size: tvw(25);
         text-align: center;
     }
@@ -23,5 +23,12 @@
             width: 6vw;
             margin-right: 1vw;
         }
+    }
+    footer {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
     }
 }

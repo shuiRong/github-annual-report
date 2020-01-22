@@ -1,8 +1,12 @@
 import React from 'react';
 import './index.scss';
 import NewYear from '../../components/NewYear';
+import { setStatusBarStyle } from '../../util';
+import Sign from '../Sign';
 
 export default function Sixth() {
+    setStatusBarStyle('--sixth-color');
+
     return (
         <div className="sixth">
             <section>
@@ -21,6 +25,9 @@ export default function Sixth() {
                 <img src={require('../../assets/star.png')} alt="star"></img>
                 Github
             </a>
+            <footer>
+                <Sign></Sign>
+            </footer>
         </div>
     );
 }

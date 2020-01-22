@@ -7,40 +7,32 @@ import Third from './views/Third/';
 import Fourth from './views/Fourth/';
 import Fifth from './views/Fifth/';
 import Sixth from './views/Sixth/';
-import Sign from './views/Sign/';
 import Home from './views/Home/';
 
 function App() {
     return (
         <Router>
             <Switch>
-                <Route path="/sixth">
+                <Route path="/github/sixth">
                     <Sixth />
-                    <Sign />
                 </Route>
-                <Route path="/fifth">
+                <Route path="/github/fifth">
                     <Fifth />
-                    <Sign />
                 </Route>
-                <Route path="/fourth">
+                <Route path="/github/fourth">
                     <Fourth />
-                    <Sign />
                 </Route>
-                <Route path="/third">
+                <Route path="/github/third">
                     <Third />
-                    <Sign />
                 </Route>
-                <Route path="/second">
+                <Route path="/github/second">
                     <Second />
-                    <Sign />
                 </Route>
-                <Route path="/first">
+                <Route path="/github/first">
                     <First />
-                    <Sign />
                 </Route>
                 <Route path="/">
                     <Home />
-                    <Sign />
                 </Route>
             </Switch>
         </Router>

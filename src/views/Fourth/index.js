@@ -2,7 +2,7 @@ import Pyramid from '../../components/Pyramid';
 import './index.scss';
 import React, { useEffect, useState } from 'react';
 import Loader from '../../components/Loader';
-import { getToken } from '../../util';
+import { getToken, setStatusBarStyle } from '../../util';
 import { useHistory } from 'react-router-dom';
 import {
     user,
@@ -12,8 +12,10 @@ import {
     getMostCommitsInOneDay,
     requestUser,
 } from '../../service';
+import Sign from '../Sign';
 
 export default function Fourth() {
+    setStatusBarStyle('--fourth-color');
     const history = useHistory();
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState({});
@@ -53,16 +55,18 @@ export default function Fourth() {
         <div
             className="fourth"
             onClick={() => {
-                history.push(`/fifth`);
+                history.push(`/github/fifth`);
             }}
         >
-            <Pyramid />
+            {/* <Pyramid></Pyramid> */}
+            <img src={require('../../assets/Sun.png')} alt="sun" />
             <section>
-                <p>
-                    <strong>{data.total}次commit</strong>
-                </p>
                 <div className="left">
-                    <p>{data.date && data.date.replace(/\//g, '-')}</p>
+                    <p>
+                        <strong>
+                            {data.date && data.date.replace(/\//g, '-')}
+                        </strong>
+                    </p>
                     <p>这天你的战斗力简直爆表</p>
                 </div>
                 <div className="right">
@@ -80,8 +84,11 @@ export default function Fourth() {
                         想必这个仓库对你来说一定很有价值吧
                     </p>
                 </div>
-                <p className="center">元气满满的一天呢～</p>
             </section>
+            <footer>
+                <p className="center">元气满满的一天呢～</p>
+                <Sign></Sign>
+            </footer>
         </div>
     );
 }

@@ -7,7 +7,7 @@
     background-color: var(--third-color);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 
     .picture {
@@ -32,6 +32,16 @@
         }
         > p {
             text-align: center;
+        }
+    }
+    footer {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+        .past {
+            width: 100%;
         }
     }
 }

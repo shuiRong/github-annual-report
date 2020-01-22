@@ -6,8 +6,13 @@
     background-color: var(--fourth-color);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
+    > img {
+        margin-top: 10vw;
+        width: 80%;
+        border-radius: 1vw;
+    }
     section {
         width: 80%;
         margin-bottom: 10vw;
@@ -30,6 +35,16 @@
         }
         strong {
             font-size: tvw(30);
+        }
+    }
+    footer {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+        .past {
+            width: 100%;
         }
     }
 }

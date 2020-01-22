@@ -2,21 +2,25 @@ import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import MilkButton from '../../components/MilkButton';
 import './index.scss';
-import { getToken, set } from '../../util';
+import { getToken, set, setStatusBarStyle } from '../../util';
 
 const client_id = '38f3a48dab9243a31252';
+if (process.env.NODE_ENV !== 'production') {
+    client_id = 'cf8ebcd166bd24e0e15f'; // test id
+}
 const authorize_uri = 'https://github.com/login/oauth/authorize';
-const redirect_uri = 'http://localhost:8080/oauth/redirect';
+const redirect_uri = 'https://github2019.herokuapp.com/oauth/redirect';
 
 function Home() {
     const history = useHistory();
+    setStatusBarStyle('--home-color');
 
     useEffect(() => {
         async function func() {
             let token = await getToken();
             if (token) {
                 set('token', token);
-                history.push(`/first`);
+                history.push(`/github/first`);
                 return;
             }
         }

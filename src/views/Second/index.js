@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './index.scss';
 import Fire from '../../components/Fire';
 import Loader from '../../components/Loader';
-import { getToken } from '../../util';
+import { getToken, setStatusBarStyle } from '../../util';
 import { useHistory } from 'react-router-dom';
 import {
     user,
@@ -10,8 +10,10 @@ import {
     first_following,
     requestUser,
 } from '../../service';
+import Sign from '../Sign';
 
 export default function Second() {
+    setStatusBarStyle('--second-color');
     const history = useHistory();
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState({});
@@ -60,7 +62,7 @@ export default function Second() {
             <section
                 className="content"
                 onClick={() => {
-                    history.push(`/third`);
+                    history.push(`/github/third`);
                 }}
             >
                 <h1>
@@ -77,8 +79,11 @@ export default function Second() {
                         是你第一个关注的人，你还记得TA吗？
                     </p>
                 </div>
-                <p>可别忘了Github是个交友网站哦～</p>
             </section>
+            <footer>
+                <p>可别忘了Github是个交友网站哦～</p>
+                <Sign></Sign>
+            </footer>
         </div>
     );
 }

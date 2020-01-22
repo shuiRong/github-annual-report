@@ -1,7 +1,7 @@
 import './index.scss';
 import React, { useEffect, useState } from 'react';
 import Loader from '../../components/Loader';
-import { getToken } from '../../util';
+import { getToken, setStatusBarStyle } from '../../util';
 import { useHistory } from 'react-router-dom';
 import {
     user,
@@ -11,8 +11,10 @@ import {
     fifthData,
     requestIssues,
 } from '../../service';
+import Sign from '../Sign';
 
 export default function Fifth() {
+    setStatusBarStyle('--fifth-color');
     const history = useHistory();
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState({});
@@ -50,7 +52,7 @@ export default function Fifth() {
         <div
             className="fifth"
             onClick={() => {
-                history.push(`/sixth`);
+                history.push(`/github/sixth`);
             }}
         >
             <div>
@@ -81,8 +83,11 @@ export default function Fifth() {
                         个组织
                     </p> */}
                 </div>
-                <p className="center">开源世界感谢你的贡献～</p>
             </section>
+            <footer>
+                <p className="center">开源世界感谢你的贡献～</p>
+                <Sign></Sign>
+            </footer>
         </div>
     );
 }

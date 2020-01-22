@@ -48,3 +48,10 @@ export const is2019 = created_at => {
 
     return false;
 };
+
+export const setStatusBarStyle = which => {
+    const color = getComputedStyle(document.body).getPropertyValue(which);
+    document.querySelectorAll('.theme-color').forEach(item => {
+        item.setAttribute('content', color);
+    });
+};

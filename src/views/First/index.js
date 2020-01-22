@@ -4,9 +4,11 @@ import './index.scss';
 import HelloYou from '../../components/HelloYou';
 import Loader from '../../components/Loader';
 import { fetchData } from '../../service';
-import { getToken } from '../../util';
+import { getToken, setStatusBarStyle } from '../../util';
+import Sign from '../Sign/';
 
 export default function First() {
+    setStatusBarStyle('--first-color');
     const history = useHistory();
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState({});
@@ -35,7 +37,7 @@ export default function First() {
         <div
             className="first"
             onClick={() => {
-                history.push(`/second`);
+                history.push(`/github/second`);
             }}
         >
             <div className="hi">
@@ -50,11 +52,14 @@ export default function First() {
                     <strong>{data.first_repo}</strong>
                     是你在这儿创建的第一个仓库
                 </p>
+            </section>
+            <footer>
                 <p className="past">
                     一转眼都<strong>{data.days}</strong>
                     天过去了...
                 </p>
-            </section>
+                <Sign></Sign>
+            </footer>
         </div>
     );
 }

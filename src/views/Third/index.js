@@ -2,7 +2,7 @@ import './index.scss';
 import NightMoon from '../../components/NightMoon';
 import React, { useEffect, useState } from 'react';
 import Loader from '../../components/Loader';
-import { getToken } from '../../util';
+import { getToken, setStatusBarStyle } from '../../util';
 import { useHistory } from 'react-router-dom';
 import {
     user,
@@ -11,6 +11,7 @@ import {
     requestCommits,
     commitsAtNight,
 } from '../../service';
+import Sign from '../Sign';
 
 const getTime = time => {
     const temp = String(time).split('.');
@@ -18,6 +19,7 @@ const getTime = time => {
 };
 
 export default function Third() {
+    setStatusBarStyle('--third-color');
     const history = useHistory();
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState({});
@@ -56,7 +58,7 @@ export default function Third() {
         <div
             className="third"
             onClick={() => {
-                history.push(`/fourth`);
+                history.push(`/github/fourth`);
             }}
         >
             <div className="picture">
@@ -80,8 +82,11 @@ export default function Third() {
                         ！！！
                     </p>
                 </div>
-                <p>不要熬夜，朋友，身体健康挺重要的</p>
             </section>
+            <footer>
+                <p>不要熬夜，朋友，身体健康挺重要的</p>
+                <Sign></Sign>
+            </footer>
         </div>
     );
 }

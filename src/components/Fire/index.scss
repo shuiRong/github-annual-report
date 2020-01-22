@@ -11,17 +11,15 @@
 
 .second {
     .container {
-        margin-top: 50vw;
+        margin-top: 10vw;
         display: flex;
         justify-content: center;
-        width: 100vw;
-        position: absolute;
+        height: 0;
         left: 0;
         top: 0;
     }
 
     .corpus {
-        position: absolute;
         transform: rotate(var(--f-rotated));
     }
 

@@ -7,7 +7,7 @@
     background-color: var(--fifth-color);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     h1 {
         font-size: tvw(40);
@@ -29,7 +29,6 @@
         }
         .right {
             text-align: right;
-            margin-bottom: 15vw;
             margin-top: 10vw;
         }
         > p {
@@ -37,6 +36,16 @@
         }
         strong {
             font-size: tvw(30);
+        }
+    }
+    footer {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+        .past {
+            width: 100%;
         }
     }
 }
