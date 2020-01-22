@@ -4,7 +4,7 @@ import MilkButton from '../../components/MilkButton';
 import './index.scss';
 import { getToken, set, setStatusBarStyle } from '../../util';
 
-const client_id = '38f3a48dab9243a31252';
+let client_id = '38f3a48dab9243a31252';
 if (process.env.NODE_ENV !== 'production') {
     client_id = 'cf8ebcd166bd24e0e15f'; // test id
 }
@@ -20,7 +20,7 @@ function Home() {
             let token = await getToken();
             if (token) {
                 set('token', token);
-                history.push(`/github/first`);
+                history.push(`/first`);
                 return;
             }
         }

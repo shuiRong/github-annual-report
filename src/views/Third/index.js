@@ -58,7 +58,7 @@ export default function Third() {
         <div
             className="third"
             onClick={() => {
-                history.push(`/github/fourth`);
+                history.push(`/fourth`);
             }}
         >
             <div className="picture">

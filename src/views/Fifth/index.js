@@ -52,7 +52,7 @@ export default function Fifth() {
         <div
             className="fifth"
             onClick={() => {
-                history.push(`/github/sixth`);
+                history.push(`/sixth`);
             }}
         >
             <div>

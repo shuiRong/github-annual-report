@@ -62,7 +62,7 @@ export default function Second() {
             <section
                 className="content"
                 onClick={() => {
-                    history.push(`/github/third`);
+                    history.push(`/third`);
                 }}
             >
                 <h1>
@@ -76,8 +76,8 @@ export default function Second() {
                     <p>同时你也收获了{data.followers}位粉丝</p>
                     <p>
                         <strong>{data.first_following}</strong>
-                        是你第一个关注的人，你还记得TA吗？
                     </p>
+                    <p>是你第一个关注的人，你还记得TA吗？</p>
                 </div>
             </section>
             <footer>

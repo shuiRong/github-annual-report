@@ -55,7 +55,7 @@ export default function Fourth() {
         <div
             className="fourth"
             onClick={() => {
-                history.push(`/github/fifth`);
+                history.push(`/fifth`);
             }}
         >
             {/* <Pyramid></Pyramid> */}

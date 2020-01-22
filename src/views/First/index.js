@@ -37,7 +37,7 @@ export default function First() {
         <div
             className="first"
             onClick={() => {
-                history.push(`/github/second`);
+                history.push(`/second`);
             }}
         >
             <div className="hi">

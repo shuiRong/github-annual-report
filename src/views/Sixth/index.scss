@@ -7,7 +7,7 @@
     background-color: var(--sixth-color);
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     p:not(.sign) {
         font-size: tvw(25);
@@ -15,7 +15,6 @@
     }
     .button {
         width: 32vw;
-        margin-top: 20vw;
         display: flex;
         align-items: center;
         justify-content: center;

@@ -1,6 +1,6 @@
 import React from 'react';
 import 'whatwg-fetch';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 import First from './views/First/';
 import Second from './views/Second/';
 import Third from './views/Third/';
@@ -13,22 +13,22 @@ function App() {
     return (
         <Router>
             <Switch>
-                <Route path="/github/sixth">
+                <Route path="/sixth">
                     <Sixth />
                 </Route>
-                <Route path="/github/fifth">
+                <Route path="/fifth">
                     <Fifth />
                 </Route>
-                <Route path="/github/fourth">
+                <Route path="/fourth">
                     <Fourth />
                 </Route>
-                <Route path="/github/third">
+                <Route path="/third">
                     <Third />
                 </Route>
-                <Route path="/github/second">
+                <Route path="/second">
                     <Second />
                 </Route>
-                <Route path="/github/first">
+                <Route path="/first">
                     <First />
                 </Route>
                 <Route path="/">
